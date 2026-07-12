@@ -1,0 +1,90 @@
+# Ghostty + tmux integration
+
+# Font for zsh + Powerlevel10k
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 14
+font-thicken = true
+font-thicken-strength = 70
+
+# Slight transparency with macOS blur
+background-opacity = 0.90
+background-opacity-cells = true
+background-blur = 20
+
+# Terminal behaviour
+copy-on-select = clipboard
+clipboard-read = allow
+clipboard-write = allow
+cursor-style = block
+cursor-style-blink = false
+window-decoration = none
+
+# Option belongs to AeroSpace. It is not used as the terminal Alt modifier.
+macos-option-as-alt = false
+
+# Raw tmux prefix (C-a). Cmd+Space is intentionally untouched.
+keybind = super+Backslash=text:\x01
+
+# iTerm-like tmux windows and panes
+# Character-form bindings replace Ghostty's native macOS menu shortcuts.
+# Physical-form aliases keep the same keys working in RU/EN layouts.
+keybind = cmd+t=text:\x01c
+keybind = super+KeyT=text:\x01c
+keybind = cmd+w=text:\x01x
+keybind = super+KeyW=text:\x01x
+keybind = cmd+shift+w=text:\x01X
+keybind = super+shift+KeyW=text:\x01X
+keybind = cmd+d=text:\x01v
+keybind = super+KeyD=text:\x01v
+keybind = cmd+shift+d=text:\x01s
+keybind = super+shift+KeyD=text:\x01s
+
+# Window navigation
+keybind = super+ArrowLeft=text:\x01p
+keybind = super+ArrowRight=text:\x01n
+keybind = cmd+0=text:\x01\t
+keybind = super+Digit0=text:\x01\t
+keybind = cmd+1=text:\x011
+keybind = super+Digit1=text:\x011
+keybind = cmd+2=text:\x012
+keybind = super+Digit2=text:\x012
+keybind = cmd+3=text:\x013
+keybind = super+Digit3=text:\x013
+keybind = cmd+4=text:\x014
+keybind = super+Digit4=text:\x014
+keybind = cmd+5=text:\x015
+keybind = super+Digit5=text:\x015
+keybind = cmd+6=text:\x016
+keybind = super+Digit6=text:\x016
+keybind = cmd+7=text:\x017
+keybind = super+Digit7=text:\x017
+keybind = cmd+8=text:\x018
+keybind = super+Digit8=text:\x018
+keybind = cmd+9=text:\x019
+keybind = super+Digit9=text:\x019
+
+# Window actions
+keybind = cmd+enter=text:\x01z
+keybind = super+Enter=text:\x01z
+keybind = cmd+r=text:\x01,
+keybind = super+KeyR=text:\x01,
+keybind = cmd+y=text:\x01y
+keybind = super+KeyY=text:\x01y
+
+# Sessions
+keybind = cmd+shift+o=text:\x01S
+keybind = super+shift+KeyO=text:\x01S
+keybind = super+shift+BracketLeft=text:\x01(
+keybind = super+shift+BracketRight=text:\x01)
+keybind = cmd+shift+l=text:\x01A
+keybind = super+shift+KeyL=text:\x01A
+keybind = cmd+shift+n=text:\x01N
+keybind = super+shift+KeyN=text:\x01N
+keybind = cmd+shift+r=text:\x01R
+keybind = super+shift+KeyR=text:\x01R
+keybind = cmd+shift+x=text:\x01G
+keybind = super+shift+KeyX=text:\x01G
+keybind = cmd+shift+q=text:\x01q
+keybind = super+shift+KeyQ=text:\x01q
+keybind = cmd+ctrl+r=text:\x01r
+keybind = super+ctrl+KeyR=text:\x01r
