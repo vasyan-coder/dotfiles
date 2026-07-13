@@ -1,9 +1,10 @@
 # dotfiles
 
-Personal Ghostty and tmux configuration for macOS.
+Personal AeroSpace, Ghostty, and tmux configuration for macOS.
 
 ## Requirements
 
+- [AeroSpace](https://github.com/nikitabobko/AeroSpace)
 - [Ghostty](https://ghostty.org/)
 - [tmux](https://github.com/tmux/tmux)
 - [JetBrainsMono Nerd Font](https://www.nerdfonts.com/)
@@ -22,6 +23,7 @@ Link the configurations:
 mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
 ln -sfn "$HOME/.dotfiles/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty"
 ln -sfn "$HOME/.dotfiles/tmux/tmux.conf" "$HOME/.tmux.conf"
+ln -sfn "$HOME/.dotfiles/aerospace/aerospace.toml" "$HOME/.aerospace.toml"
 ```
 
-Restart Ghostty and reload tmux after installation.
+Restart Ghostty, reload tmux, and run `aerospace reload-config` after installation.
