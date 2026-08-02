@@ -1,0 +1,66 @@
+# Auto-attach Ghostty shells to a persistent tmux session.
+# This must stay before Powerlevel10k instant prompt.
+# if [[ -o interactive && -z "${TMUX:-}" && -z "${SSH_CONNECTION:-}" && "${TERM_PROGRAM:-}" == "ghostty" ]] && command -v tmux >/dev/null 2>&1; then
+#   exec tmux new-session -A -s main
+# fi
+#
+# # Auto-attach Ghostty shells to a persistent tmux session.
+# This must stay before Powerlevel10k instant prompt.
+if [[ -o interactive \
+  && -z "${TMUX:-}" \
+  && -z "${SSH_CONNECTION:-}" \
+  && "${TERM_PROGRAM:-}" == "ghostty" \
+]] && command -v tmux >/dev/null 2>&1; then
+  tmux new-session -A -s main
+fi
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Zsh theme
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Completion and update examples are intentionally left at their defaults.
+# CASE_SENSITIVE="true"
+# HYPHEN_INSENSITIVE="true"
+# zstyle ':omz:update' mode auto
+
+plugins=(
+	git
+	zsh-syntax-highlighting
+	zsh-autosuggestions
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Personal aliases
+alias nv="nvim"
+alias zsh="nvim ~/.zshrc"
+alias szsh="source ~/.zshrc"
+
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
+
+
+# Option+←/→ — word motion (Ghostty/tmux send xterm alt-arrow sequences).
+# Without these zle has no binding for them and inserts the raw escape tail.
+bindkey "^[[1;3D" backward-word   # Option+Left
+bindkey "^[[1;3C" forward-word    # Option+Right
+bindkey "^[[1;9D" backward-word   # Option+Left (alt encoding)
+bindkey "^[[1;9C" forward-word    # Option+Right (alt encoding)
+bindkey "^[^[[D"  backward-word   # ESC-prefixed variant
+bindkey "^[^[[C"  forward-word
+bindkey "^[^?"    backward-kill-word  # Option+Backspace

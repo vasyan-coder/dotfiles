@@ -103,10 +103,11 @@ alt-f = 'fullscreen'
 alt-r = 'mode resize'
 alt-g = 'mode join'
 alt-e = 'mode service'
-alt-left = 'focus-monitor --wrap-around left'
-alt-right = 'focus-monitor --wrap-around right'
-alt-shift-left = 'move-node-to-monitor --wrap-around left'
-alt-shift-right = 'move-node-to-monitor --wrap-around right'
+# Disabled: Option+←/→ and Option+Shift+←/→ are left to macOS word navigation.
+# alt-left = 'focus-monitor --wrap-around left'
+# alt-right = 'focus-monitor --wrap-around right'
+# alt-shift-left = 'move-node-to-monitor --wrap-around left'
+# alt-shift-right = 'move-node-to-monitor --wrap-around right'
 alt-ctrl-left = 'move-workspace-to-monitor --wrap-around left'
 alt-ctrl-right = 'move-workspace-to-monitor --wrap-around right'
 
@@ -164,17 +165,17 @@ run = ['move-node-to-workspace 01-term', 'layout tiling']
 
 # 02 — development
 [[on-window-detected]]
-if.app-name-regex-substring = '^(Xcode|Cursor|Android Studio|IntelliJ IDEA|JetBrains Toolbox|Docker|Hammerspoon|IDLE|Python Launcher)$'
+if.app-name-regex-substring = '^(Xcode|Cursor|Android Studio|IntelliJ IDEA|JetBrains Toolbox|Docker|Hammerspoon|IDLE|Python Launcher|Visual Studio Code|Bruno|Offset Explorer 4|Nessy Desktop)$'
 run = 'move-node-to-workspace 02-dev'
 
 # 03 — browsers
 [[on-window-detected]]
-if.app-name-regex-substring = '^(Safari|Google Chrome|Arc|Comet|Dia|ChatGPT Atlas)$'
+if.app-name-regex-substring = '^(Safari|Google Chrome|Arc|Comet|Dia|ChatGPT Atlas|Zen|Matter)$'
 run = 'move-node-to-workspace 03-web'
 
 # 04 — AI tools
 [[on-window-detected]]
-if.app-name-regex-substring = '^(ChatGPT|ChatGPT 2|Codex|Claude|OpenClaw|Assistant|Image Playground|Create ML)$'
+if.app-name-regex-substring = '^(ChatGPT|ChatGPT 2|Codex|Claude|OpenClaw|Assistant|Image Playground|Create ML|LM Studio)$'
 run = 'move-node-to-workspace 04-ai'
 
 # 05 — study and writing
@@ -184,25 +185,26 @@ run = 'move-node-to-workspace 05-study'
 
 # 06 — planning
 [[on-window-detected]]
-if.app-name-regex-substring = '^(Calendar|Mail|Structured|Structured 2|Reminders|Journal|Stickies)$'
+if.app-name-regex-substring = '^(Calendar|Mail|Structured|Structured 2|Reminders|Journal|Stickies|Microsoft Outlook|Numbers)$'
 run = 'move-node-to-workspace 06-plan'
 
 # 07 — communications
 [[on-window-detected]]
-if.app-name-regex-substring = '^(Telegram|Discord|Messages|FaceTime|Phone|Contacts)$'
+if.app-name-regex-substring = '^(Telegram|Discord|Messages|FaceTime|Phone|Contacts|Толк|Time)$'
 run = 'move-node-to-workspace 07-comms'
 
 # 08 — simulators, remote access, automation and lab tools
 [[on-window-detected]]
-if.app-name-regex-substring = '^(Simulator|Instruments|Accessibility Inspector|FileMerge|Reality Composer Pro|Icon Composer|Automator|Shortcuts|VirtualBox)$'
+if.app-name-regex-substring = '^(Simulator|Instruments|Accessibility Inspector|FileMerge|Reality Composer Pro|Icon Composer|Automator|Shortcuts|VirtualBox|DataGrip|T-Insomnia)$'
 run = 'move-node-to-workspace 08-lab'
 
 # 09 — media
 [[on-window-detected]]
-if.app-name-regex-substring = '^(Spotify|Music|Podcasts|QuickTime Player|Photos|TV|VoiceMemos|Voice Memos|Photo Booth|Image Capture|iPhone Mirroring)$'
+if.app-name-regex-substring = '^(Spotify|Music|Podcasts|TV|QuickTime Player|Photos|TV|VoiceMemos|Voice Memos|Photo Booth|Image Capture|iPhone Mirroring)$'
 run = 'move-node-to-workspace 09-media'
 
 # 10 — system and network utilities
 [[on-window-detected]]
-if.app-name-regex-substring = '^(Activity Monitor|Disk Utility|BetterDisplay|DisplayLink Manager|Raycast Beta|logioptionsplus|Unzip - RAR ZIP 7Z Unarchiver)$'
+if.app-name-regex-substring = '^(Activity Monitor|Disk Utility|BetterDisplay|DisplayLink Manager|Raycast Beta|logioptionsplus|Unzip - RAR ZIP 7Z Unarchiver|Cisco|Keka|Posture Pals|Nestor Spotlight)$'
 run = 'move-node-to-workspace 10-utils'
+

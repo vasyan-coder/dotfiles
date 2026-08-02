@@ -1,90 +1,91 @@
-# Ghostty + tmux integration
-
 # Font for zsh + Powerlevel10k
 font-family = JetBrainsMono Nerd Font Mono
 font-size = 14
+
+background-opacity = 0.85
+background-blur = 30
+
+# Slightly thicker text on macOS, optional but usually nicer with JetBrains Mono
 font-thicken = true
 font-thicken-strength = 70
 
-# Slight transparency with macOS blur
-background-opacity = 0.90
-background-opacity-cells = true
-background-blur = 20
-
-# Terminal behaviour
+# Better terminal behavior
 copy-on-select = clipboard
 clipboard-read = allow
 clipboard-write = allow
+
+# Cursor
 cursor-style = block
 cursor-style-blink = false
-window-decoration = none
 
-# Option belongs to AeroSpace. It is not used as the terminal Alt modifier.
-macos-option-as-alt = false
+# Отключает macOS window decorations, а вместе с ними native tabs
+# window-decoration = none
 
-# Raw tmux prefix (C-a). Cmd+Space is intentionally untouched.
-keybind = super+Backslash=text:\x01
+# --- tmux integration: Cmd behaves like terminal-native shortcuts ---
 
-# iTerm-like tmux windows and panes
-# Character-form bindings replace Ghostty's native macOS menu shortcuts.
-# Physical-form aliases keep the same keys working in RU/EN layouts.
+# Не создаём native Ghostty tab, чтобы AeroSpace не ломал layout
 keybind = cmd+t=text:\x01c
-keybind = super+KeyT=text:\x01c
+
+# Закрыть текущий tmux pane/window
 keybind = cmd+w=text:\x01x
-keybind = super+KeyW=text:\x01x
+
+# Принудительно закрыть tmux window
 keybind = cmd+shift+w=text:\x01X
-keybind = super+shift+KeyW=text:\x01X
+
+# iTerm-like splits
 keybind = cmd+d=text:\x01v
-keybind = super+KeyD=text:\x01v
 keybind = cmd+shift+d=text:\x01s
-keybind = super+shift+KeyD=text:\x01s
 
-# Window navigation
-keybind = super+ArrowLeft=text:\x01p
-keybind = super+ArrowRight=text:\x01n
-keybind = cmd+0=text:\x01\t
-keybind = super+Digit0=text:\x01\t
-keybind = cmd+1=text:\x011
-keybind = super+Digit1=text:\x011
-keybind = cmd+2=text:\x012
-keybind = super+Digit2=text:\x012
-keybind = cmd+3=text:\x013
-keybind = super+Digit3=text:\x013
-keybind = cmd+4=text:\x014
-keybind = super+Digit4=text:\x014
-keybind = cmd+5=text:\x015
-keybind = super+Digit5=text:\x015
-keybind = cmd+6=text:\x016
-keybind = super+Digit6=text:\x016
-keybind = cmd+7=text:\x017
-keybind = super+Digit7=text:\x017
-keybind = cmd+8=text:\x018
-keybind = super+Digit8=text:\x018
-keybind = cmd+9=text:\x019
-keybind = super+Digit9=text:\x019
+# Переключение tmux sessions (prefix + ( / ) → switch-client -p/-n)
+keybind = cmd+left=text:\x01(
+keybind = cmd+right=text:\x01)
 
-# Window actions
+# Переключение tmux windows
+keybind = cmd+shift+left=text:\x01p
+keybind = cmd+shift+right=text:\x01n
+
+# Zoom pane
 keybind = cmd+enter=text:\x01z
-keybind = super+Enter=text:\x01z
-keybind = cmd+r=text:\x01,
-keybind = super+KeyR=text:\x01,
-keybind = cmd+y=text:\x01y
-keybind = super+KeyY=text:\x01y
 
-# Sessions
+# Rename tmux window
+keybind = cmd+r=text:\x01,
+
+# Reload tmux config
+keybind = cmd+shift+r=text:\x01r
+
+# Переключение по номерам, как Cmd+1..9 в GUI tabs
+keybind = cmd+1=text:\x011
+keybind = cmd+2=text:\x012
+keybind = cmd+3=text:\x013
+keybind = cmd+4=text:\x014
+keybind = cmd+5=text:\x015
+keybind = cmd+6=text:\x016
+keybind = cmd+7=text:\x017
+keybind = cmd+8=text:\x018
+keybind = cmd+9=text:\x019
+
+keybind = cmd+digit1=text:\x01\x31
+keybind = cmd+digit2=text:\x01\x32
+keybind = cmd+digit3=text:\x01\x33
+keybind = cmd+digit4=text:\x01\x34
+keybind = cmd+digit5=text:\x01\x35
+keybind = cmd+digit6=text:\x01\x36
+keybind = cmd+digit7=text:\x01\x37
+keybind = cmd+digit8=text:\x01\x38
+keybind = cmd+digit9=text:\x01\x39
+keybind = cmd+digit0=text:\x01\x30
+
+# --- tmux sessions like higher-level iTerm tabs/workspaces ---
+
+# Просмотр всех tmux-сессий/окон/pane
 keybind = cmd+shift+o=text:\x01S
-keybind = super+shift+KeyO=text:\x01S
-keybind = super+shift+BracketLeft=text:\x01(
-keybind = super+shift+BracketRight=text:\x01)
-keybind = cmd+shift+l=text:\x01A
-keybind = super+shift+KeyL=text:\x01A
-keybind = cmd+shift+n=text:\x01N
-keybind = super+shift+KeyN=text:\x01N
-keybind = cmd+shift+r=text:\x01R
-keybind = super+shift+KeyR=text:\x01R
-keybind = cmd+shift+x=text:\x01G
-keybind = super+shift+KeyX=text:\x01G
-keybind = cmd+shift+q=text:\x01q
-keybind = super+shift+KeyQ=text:\x01q
-keybind = cmd+ctrl+r=text:\x01r
-keybind = super+ctrl+KeyR=text:\x01r
+
+# Переключение между tmux-сессиями, как браузерные tab shortcuts
+keybind = cmd+shift+left_bracket=text:\x01(
+keybind = cmd+shift+right_bracket=text:\x01)
+
+# Вернуться в последнюю активную tmux-сессию
+keybind = cmd+shift+l=text:\x01L
+
+# Создать новую tmux-сессию
+keybind = cmd+shift+t=text:\x01N
