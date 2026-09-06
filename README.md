@@ -18,22 +18,31 @@ Clone the repository:
 git clone git@github.com:vasyan-coder/dotfiles.git ~/.dotfiles
 ```
 
-Link the configurations:
+Preview the installation, then apply it:
 
 ```sh
-mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
-ln -sfn "$HOME/.dotfiles/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty"
-ln -sfn "$HOME/.dotfiles/tmux/tmux.conf" "$HOME/.tmux.conf"
-ln -sfn "$HOME/.dotfiles/aerospace/aerospace.toml" "$HOME/.aerospace.toml"
-ln -sfn "$HOME/.dotfiles/zsh/zshrc" "$HOME/.zshrc"
+cd ~/.dotfiles
+./install.sh --dry-run
+./install.sh
 ```
+
+The installer can be run from any working directory and accepts component names,
+for example `~/.dotfiles/install.sh aerospace zsh`. Existing files and symlinks
+are moved to `$XDG_STATE_HOME/dotfiles/backups/` when it is set, or to
+`~/.local/state/dotfiles/backups/` otherwise. Set `DOTFILES_BACKUP_DIR` to use
+another backup location.
+
+The zsh, tmux, Ghostty, and AeroSpace helper files are linked to the repository.
+The AeroSpace config itself is copied to `~/.aerospace.toml`: changing gaps with
+the hotkeys therefore stays machine-local and does not dirty the Git working
+tree. To restore the versioned defaults, run `./install.sh aerospace` again.
 
 Restart Ghostty, reload tmux, and run `aerospace reload-config` after installation.
 
 ## Keyboard layout
 
-Option is reserved for the terminal: Option+←/→ and Option+Shift+←/→ stay with
-macOS word navigation/selection, so AeroSpace does not bind them.
+Option is the AeroSpace modifier, except Option+←/→ and Option+Shift+←/→:
+those stay with macOS word navigation/selection.
 
 | Keys | Action |
 | --- | --- |
@@ -43,4 +52,5 @@ macOS word navigation/selection, so AeroSpace does not bind them.
 | `Cmd+T` / `Cmd+W` | new tmux window / close pane |
 | `Cmd+D` / `Cmd+Shift+D` | split pane vertically / horizontally |
 | `Option+H/J/K/L` | focus window in AeroSpace |
+| `Option+Shift+-` / `Option+Shift+=` | decrease/increase outer screen gaps by 4 px |
 | `Option+Ctrl+←/→` | move workspace to another monitor |

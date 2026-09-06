@@ -1,4 +1,4 @@
-# AeroSpace: Cmd leader for window management, Option remains for Ghostty/tmux.
+# AeroSpace: Option leader for window management; Cmd remains for Ghostty/tmux.
 
 config-version = 2
 start-at-login = true
@@ -49,6 +49,11 @@ alt-shift-l = 'move right'
 
 alt-minus = 'resize smart -50'
 alt-equal = 'resize smart +50'
+
+# Outer gaps from the screen edges. The helper updates the active config copy,
+# validates it, and reloads AeroSpace without touching the Git-tracked default.
+alt-shift-minus = 'exec-and-forget ${HOME}/.local/bin/aerospace-adjust-gaps decrease'
+alt-shift-equal = 'exec-and-forget ${HOME}/.local/bin/aerospace-adjust-gaps increase'
 
 # Numeric workspace aliases
 alt-1 = 'workspace 01-term'
@@ -207,4 +212,3 @@ run = 'move-node-to-workspace 09-media'
 [[on-window-detected]]
 if.app-name-regex-substring = '^(Activity Monitor|Disk Utility|BetterDisplay|DisplayLink Manager|Raycast Beta|logioptionsplus|Unzip - RAR ZIP 7Z Unarchiver|Cisco|Keka|Posture Pals|Nestor Spotlight)$'
 run = 'move-node-to-workspace 10-utils'
-
