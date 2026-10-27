@@ -2,6 +2,10 @@
 
 Personal AeroSpace, Ghostty, tmux, and zsh configuration for macOS.
 
+The optional [Herdr-style tmux sidebar](tmux-herdr/) is saved as a separate
+configuration snapshot. The standard tmux configuration remains in `tmux/` and
+is installed by `./install.sh tmux`.
+
 ## Requirements
 
 - [AeroSpace](https://github.com/nikitabobko/AeroSpace)
